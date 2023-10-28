@@ -33,6 +33,6 @@ services:
       SSL_CERT: cert.pem
       SSL_KEY: privkey.pem
     volumes:
-      - ./:/etc/socatorssl/certs/:ro
+      - /etc/letsencrypt/:/etc/socatorssl/certs/:ro
     ports:
       - 5100:5100
