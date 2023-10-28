@@ -12,7 +12,7 @@ services:
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
       - /var/www/certbot:/var/www/certbot/:ro
-      - /etc/nginx/ssl/:/etc/nginx/ssl/:ro
+      - /etc/letsencrypt/:/etc/nginx/ssl/:ro
   certbot:
     image: certbot/certbot:latest
     volumes:
