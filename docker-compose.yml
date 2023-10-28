@@ -9,6 +9,8 @@ services:
       - '80:80'
       - '443:443'
     restart: always
+    depends_on:
+      - tor
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
       - /var/www/certbot:/var/www/certbot/:ro
@@ -24,16 +26,9 @@ services:
   tor:
     build: ./tor
     restart: always
-    depends_on:
-      - nginx
     environment:
       PUBLIC_PORT: 5100
       TOR_SITE: robosats6tkf3eva7x2voqso3a5wcorsnw34jveyxfqi2fu7oyheasid.onion
       TOR_SITE_PORT: 80
-      SSL_CERT: cert.pem
-      SSL_KEY: privkey.pem
-    volumes:
-      - /etc/letsencrypt/:/etc/socatorssl/certs/:ro
     ports:
       - 5100:5100
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; entrypoint.sh; done'"
