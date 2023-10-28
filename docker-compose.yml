@@ -36,3 +36,4 @@ services:
       - /etc/letsencrypt/:/etc/socatorssl/certs/:ro
     ports:
       - 5100:5100
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; entrypoint.sh; done'"
