@@ -11,10 +11,10 @@ services:
     restart: always
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
+      - /var/www/certbot:/var/www/certbot/:ro
+      - /etc/nginx/ssl/:/etc/nginx/ssl/:ro
   certbot:
     image: certbot/certbot:latest
     volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
+      - /var/www/certbot/:/var/www/certbot/:rw
+      - /etc/letsencrypt/:/etc/letsencrypt/:rw
