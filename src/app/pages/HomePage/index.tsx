@@ -2,7 +2,7 @@ import { CopyOutlined, ExperimentOutlined, GithubOutlined, ReadOutlined, Warning
 import { Button, Col, Divider, Dropdown, MenuProps, Row, Tooltip, Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { isMobile } from 'react-device-detect'
-import { learnUrl, nostrPubKey, onionUrl, onionUrlTest, unsafeUrl } from '../../../constants'
+import { learnUrl, nostrPubKey, onionUrl, onionUrlTest, unsafeTestUrl, unsafeUrl } from '../../../constants'
 
 export const HomePage: () => JSX.Element = () => {
   const { t } = useTranslation()
@@ -17,6 +17,10 @@ export const HomePage: () => JSX.Element = () => {
 
   const onTestClick = (): void => {
     window.location.href = onionUrlTest
+  }
+
+  const onUnsafeTestClick = (): void => {
+    window.location.href = unsafeTestUrl
   }
 
   const nostrClick = (): void => {
@@ -49,8 +53,14 @@ export const HomePage: () => JSX.Element = () => {
       label: t('Testnet'),
       key: '2',
       icon: <ExperimentOutlined />,
-      danger: true,
       onClick: onTestClick,
+    },
+    {
+      label: t('Unsafe Testnet'),
+      key: '3',
+      icon: <WarningOutlined />,
+      danger: true,
+      onClick: onUnsafeTestClick,
     },
   ]
 
@@ -70,7 +80,7 @@ export const HomePage: () => JSX.Element = () => {
           </Col>
           <Col span='24'>
             <Row justify='space-around'>
-              <Typography.Text>{t('a Robosats coordinator')}</Typography.Text>
+              <Typography.Text>{t('a 🤖RoboSats⚡ coordinator')}</Typography.Text>
             </Row>
           </Col>
           <Col span='24'>
