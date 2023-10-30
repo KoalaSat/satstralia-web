@@ -1,8 +1,8 @@
-import { CopyOutlined, GithubOutlined, ReadOutlined, WarningOutlined } from '@ant-design/icons'
+import { CopyOutlined, ExperimentOutlined, GithubOutlined, ReadOutlined, WarningOutlined } from '@ant-design/icons'
 import { Button, Col, Divider, Dropdown, MenuProps, Row, Tooltip, Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { isMobile } from 'react-device-detect'
-import { learnUrl, nostrPubKey, onionUrl, unsafeUrl } from '../../../constants'
+import { learnUrl, nostrPubKey, onionUrl, onionUrlTest, unsafeUrl } from '../../../constants'
 
 export const HomePage: () => JSX.Element = () => {
   const { t } = useTranslation()
@@ -13,6 +13,10 @@ export const HomePage: () => JSX.Element = () => {
 
   const onUnsafeClick = (): void => {
     window.location.href = unsafeUrl
+  }
+
+  const onTestClick = (): void => {
+    window.location.href = onionUrlTest
   }
 
   const nostrClick = (): void => {
@@ -40,6 +44,13 @@ export const HomePage: () => JSX.Element = () => {
       icon: <WarningOutlined />,
       danger: true,
       onClick: onUnsafeClick,
+    },
+    {
+      label: t('Testnet'),
+      key: '2',
+      icon: <ExperimentOutlined />,
+      danger: true,
+      onClick: onTestClick,
     },
   ]
 
