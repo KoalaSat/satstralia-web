@@ -1,4 +1,4 @@
-import { CopyOutlined, ExperimentOutlined, GithubOutlined, ReadOutlined, WarningOutlined } from '@ant-design/icons'
+import { ExperimentOutlined, GithubOutlined, ReadOutlined, WarningOutlined } from '@ant-design/icons'
 import { Button, Col, Divider, Dropdown, MenuProps, Row, Tooltip, Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { isMobile } from 'react-device-detect'
@@ -31,33 +31,23 @@ export const HomePage: () => JSX.Element = () => {
     }
   }
 
-  const copy = (): void => {
-    navigator.clipboard.writeText(onionUrl)
-  }
-
   const dropdownMenu: MenuProps['items'] = [
     {
-      label: t('Copy'),
-      key: '0',
-      icon: <CopyOutlined />,
-      onClick: copy,
-    },
-    {
       label: t('Unsafe'),
-      key: '1',
+      key: '0',
       icon: <WarningOutlined />,
       danger: true,
       onClick: onUnsafeClick,
     },
     {
       label: t('Testnet'),
-      key: '2',
+      key: '1',
       icon: <ExperimentOutlined />,
       onClick: onTestClick,
     },
     {
       label: t('Unsafe Testnet'),
-      key: '3',
+      key: '2',
       icon: <WarningOutlined />,
       danger: true,
       onClick: onUnsafeTestClick,
