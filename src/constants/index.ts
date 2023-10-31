@@ -1,4 +1,4 @@
-export const onionUrl = ''
+export const onionUrl = 'http://satstraoq35jffvkgpfoqld32nzw2siuvowanruindbfojowpwsjdgad.onion'
 export const onionUrlTest = 'http://qu6xztmzhlve6nxbb77jldek53pvhkaltz6seni7wq6g6yyj233qp4yd.onion'
 export const unsafeUrl = 'https://unsafe.satstralia.com/'
 export const unsafeTestUrl = 'https://test.unsafe.satstralia.com/'
