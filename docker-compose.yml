@@ -38,7 +38,7 @@ services:
     restart: always
     environment:
       PUBLIC_PORT: 5101
-      TOR_SITE: qu6xztmzhlve6nxbb77jldek53pvhkaltz6seni7wq6g6yyj233qp4yd.onion
+      TOR_SITE: testraliar7xkhos2gipv2k65obykofb4jqzl5l4danfryacifi4t7qd.onion
       TOR_SITE_PORT: 80
     ports:
       - 5101:5100

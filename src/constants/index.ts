@@ -1,5 +1,5 @@
 export const onionUrl = 'http://satstraoq35jffvkgpfoqld32nzw2siuvowanruindbfojowpwsjdgad.onion'
-export const onionUrlTest = 'http://qu6xztmzhlve6nxbb77jldek53pvhkaltz6seni7wq6g6yyj233qp4yd.onion'
+export const onionUrlTest = 'http://testraliar7xkhos2gipv2k65obykofb4jqzl5l4danfryacifi4t7qd.onion'
 export const unsafeUrl = 'https://unsafe.satstralia.com/'
 export const unsafeTestUrl = 'https://test.unsafe.satstralia.com/'
 export const learnUrl = 'https://learn.robosats.com/'
