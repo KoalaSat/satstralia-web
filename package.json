@@ -71,6 +71,7 @@
   "dependencies": {
     "@ant-design/icons": "5.0.1",
     "antd": "5.2.3",
+    "axios": "^1.6.7",
     "date-fns": "^2.30.0",
     "i18next": "21.9.2",
     "i18next-browser-languagedetector": "6.1.5",
