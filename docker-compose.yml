@@ -24,6 +24,11 @@ services:
       - /var/www/certbot/:/var/www/certbot/:rw
       - /etc/letsencrypt/:/etc/letsencrypt/:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+  uptime_kuma:
+    image: louislam/uptime-kuma
+    restart: always
+    ports:
+      - 3001:3001
   tor:
     build: ./tor
     restart: always
