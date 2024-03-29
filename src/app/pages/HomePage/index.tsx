@@ -190,6 +190,20 @@ export const HomePage: () => JSX.Element = () => {
             <Row justify='center' gutter={[0, 16]}>
               <Col sm={4} xs={12}>
                 <Row justify='center'>
+                  <Tooltip title='Health'>
+                    <Button
+                      ghost
+                      href='http://health.satstralia.com/status/robosats'
+                      target='_blank'
+                      style={{ height: 60 }}
+                    >
+                      <img src='/assets/health.svg' alt='Health' style={{ height: 48, width: 96 }} />
+                    </Button>
+                  </Tooltip>
+                </Row>
+              </Col>
+              <Col sm={4} xs={12}>
+                <Row justify='center'>
                   <Tooltip title='Amboss'>
                     <Button
                       ghost
