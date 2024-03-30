@@ -193,7 +193,7 @@ export const HomePage: () => JSX.Element = () => {
                   <Tooltip title='Health'>
                     <Button
                       ghost
-                      href='http://health.satstralia.com/status/robosats'
+                      href='https://health.satstralia.com'
                       target='_blank'
                       style={{ height: 60 }}
                     >
