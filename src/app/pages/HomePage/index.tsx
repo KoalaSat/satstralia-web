@@ -2,7 +2,7 @@ import { ExperimentOutlined, GithubOutlined, ReadOutlined, WarningOutlined } fro
 import { Button, Col, Divider, Dropdown, MenuProps, Row, Statistic, Tooltip, Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { isMobile } from 'react-device-detect'
-import { learnUrl, nostrPubKey, onionUrl, onionUrlTest, unsafeTestUrl, unsafeUrl } from '../../../constants'
+import { learnUrl, nostrPubKey, onionUrl, onionUrlTest, unsafeUrl } from '../../../constants'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -39,10 +39,6 @@ export const HomePage: () => JSX.Element = () => {
     window.location.href = onionUrlTest
   }
 
-  const onUnsafeTestClick = (): void => {
-    window.location.href = unsafeTestUrl
-  }
-
   const nostrClick = (): void => {
     if (isMobile) {
       window.location.href = `nostr:${nostrPubKey}`
@@ -53,24 +49,17 @@ export const HomePage: () => JSX.Element = () => {
 
   const dropdownMenu: MenuProps['items'] = [
     {
-      label: t('Unsafe'),
-      key: '0',
-      icon: <WarningOutlined />,
-      danger: true,
-      onClick: onUnsafeClick,
-    },
-    {
       label: t('Testnet'),
       key: '1',
       icon: <ExperimentOutlined />,
       onClick: onTestClick,
     },
     {
-      label: t('Unsafe Testnet'),
-      key: '2',
+      label: t('Unsafe'),
+      key: '0',
       icon: <WarningOutlined />,
       danger: true,
-      onClick: onUnsafeTestClick,
+      onClick: onUnsafeClick,
     },
   ]
 
