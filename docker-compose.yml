@@ -33,6 +33,13 @@ services:
       - 3001:3001
     networks:
       - nginx
+  uptime_tor:
+    image: dperson/torproxy
+    ports:
+      - 8118:8118
+      - 9050:9050
+    networks:
+      - nginx
   tor:
     build: ./tor
     restart: always
@@ -58,4 +65,4 @@ services:
 networks:
   nginx:
     driver: bridge
-    external: true
+    # external: true
