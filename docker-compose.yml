@@ -37,7 +37,6 @@ services:
     image: dperson/torproxy
     ports:
       - 8118:8118
-      - 9050:9050
     networks:
       - nginx
   tor:
