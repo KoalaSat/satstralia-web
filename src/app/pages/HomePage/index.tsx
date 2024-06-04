@@ -1,8 +1,8 @@
-import { ExperimentOutlined, GithubOutlined, ReadOutlined, WarningOutlined } from '@ant-design/icons'
+import { ExperimentOutlined, GithubOutlined, MailOutlined, ReadOutlined, WarningOutlined } from '@ant-design/icons'
 import { Button, Col, Divider, Dropdown, MenuProps, Row, Statistic, Tooltip, Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { isMobile } from 'react-device-detect'
-import { learnUrl, nostrPubKey, onionUrl, onionUrlTest, unsafeUrl } from '../../../constants'
+import { email, learnUrl, nostrPubKey, onionUrl, onionUrlTest, unsafeUrl } from '../../../constants'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -93,6 +93,18 @@ export const HomePage: () => JSX.Element = () => {
                     href={learnUrl}
                   >
                     {t('Learn')}
+                  </Button>
+                </Row>
+              </Col>
+              <Col sm={6} xs={24}>
+                <Row justify={{ sm: 'center', xs: 'center' }}>
+                  <Button
+                    icon={<MailOutlined style={{ top: -3, position: 'relative' }} />}
+                    size='large'
+                    target='_blank'
+                    href={`mailto:${email}`}
+                  >
+                    {t('Contact')}
                   </Button>
                 </Row>
               </Col>
