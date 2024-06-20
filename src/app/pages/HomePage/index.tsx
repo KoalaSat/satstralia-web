@@ -1,8 +1,8 @@
-import { ExperimentOutlined, GithubOutlined, MailOutlined, ReadOutlined, WarningOutlined } from '@ant-design/icons'
-import { Button, Col, Divider, Dropdown, MenuProps, Row, Statistic, Tooltip, Typography } from 'antd'
+import { CopyOutlined, ExperimentOutlined, GithubOutlined, MailOutlined, ReadOutlined, WarningOutlined } from '@ant-design/icons'
+import { Button, Col, Divider, Dropdown, MenuProps, Row, Statistic, Tooltip, Typography, notification } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { isMobile } from 'react-device-detect'
-import { email, learnUrl, nostrPubKey, onionUrl, onionUrlTest, unsafeUrl } from '../../../constants'
+import { email, learnUrl, nostrPubKey, nostrRelay, onionUrl, onionUrlTest, unsafeUrl } from '../../../constants'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -16,6 +16,7 @@ interface Stats {
 
 export const HomePage: () => JSX.Element = () => {
   const { t } = useTranslation()
+  const [api, contextHolder] = notification.useNotification();
 
   const [stats, setStats] = useState<Stats>()
 
@@ -47,6 +48,18 @@ export const HomePage: () => JSX.Element = () => {
     }
   }
 
+  const nostrRelayClick = (): void => {
+    navigator.clipboard.writeText(nostrRelay)
+    .then(() => {
+      api.info({
+        message: 'Relay URL copied!',
+        description: 'Add it to your favorite nostr client.',
+        placement: 'top',
+        icon: <CopyOutlined />,
+      });
+    })
+  }
+
   const dropdownMenu: MenuProps['items'] = [
     {
       label: t('Testnet'),
@@ -65,6 +78,7 @@ export const HomePage: () => JSX.Element = () => {
 
   return (
     <Row justify='space-around' style={{ padding: '24px 0' }}>
+      {contextHolder}
       <Col span='22'>
         <Row justify='space-around' gutter={[0, 16]}>
           <Col span='24'>
@@ -137,7 +151,7 @@ export const HomePage: () => JSX.Element = () => {
                 <Row justify='center'>
                   <Tooltip title='Nostr'>
                     <Button ghost onClick={nostrClick} target='_blank' style={{ height: 60 }}>
-                      <img src='/assets/nostr-logo.svg' alt='Nostr' style={{ width: 48 }} />
+                      <img src='/assets/nostr-logo.svg' alt='Nostr' style={{ height: 48, width: 96 }} />
                     </Button>
                   </Tooltip>
                 </Row>
@@ -151,7 +165,7 @@ export const HomePage: () => JSX.Element = () => {
                       target='_blank'
                       style={{ height: 60 }}
                     >
-                      <img src='/assets/matrix-logo.svg' alt='Matrix' style={{ width: 48 }} />
+                      <img src='/assets/matrix-logo.svg' alt='Matrix' style={{ height: 48, width: 96 }} />
                     </Button>
                   </Tooltip>
                 </Row>
@@ -165,7 +179,7 @@ export const HomePage: () => JSX.Element = () => {
                       target='_blank'
                       style={{ height: 60 }}
                     >
-                      <img src='/assets/telegram-logo.svg' alt='Telegram' style={{ width: 48 }} />
+                      <img src='/assets/telegram-logo.svg' alt='Telegram' style={{ height: 48, width: 96 }} />
                     </Button>
                   </Tooltip>
                 </Row>
@@ -179,14 +193,14 @@ export const HomePage: () => JSX.Element = () => {
                       target='_blank'
                       style={{ height: 60 }}
                     >
-                      <img src='/assets/simplex-logo.svg' alt='Simplex' style={{ width: 48 }} />
+                      <img src='/assets/simplex-logo.svg' alt='Simplex' style={{ height: 48, width: 96 }} />
                     </Button>
                   </Tooltip>
                 </Row>
               </Col>
             </Row>
           </Col>
-          <Divider>{t('Stats')}</Divider>
+          <Divider>{t('Tools')}</Divider>
           <Col span='24'>
             <Row justify='center' gutter={[0, 16]}>
               <Col sm={4} xs={12}>
@@ -203,6 +217,24 @@ export const HomePage: () => JSX.Element = () => {
                   </Tooltip>
                 </Row>
               </Col>
+              <Col sm={4} xs={12}>
+                <Row justify='center'>
+                  <Tooltip title='Nostr Relay'>
+                    <Button
+                      ghost
+                      style={{ height: 60 }}
+                      onClick={() => nostrRelayClick()}
+                    >
+                      <img src='/assets/nostr-logo.svg' alt='nostr Relay' style={{ height: 48, width: 96 }} />
+                    </Button>
+                  </Tooltip>
+                </Row>
+              </Col>
+            </Row>
+          </Col>
+          <Divider>{t('Stats')}</Divider>
+          <Col span='24'>
+            <Row justify='center' gutter={[0, 16]}>
               <Col sm={4} xs={12}>
                 <Row justify='center'>
                   <Tooltip title='Amboss'>
@@ -231,7 +263,7 @@ export const HomePage: () => JSX.Element = () => {
               </Col>
               <Col sm={6} xs={12}>
                 <Row justify='center'>
-                  <Statistic title={t('Active robots')} value={stats?.active_robots_today} loading={stats === undefined}/>
+                  <Statistic title={t('Active robots')} value={stats?.active_robots_today} loading={stats === undefined} />
                 </Row>
               </Col>
             </Row>
