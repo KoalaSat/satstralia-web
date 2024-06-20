@@ -39,8 +39,7 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./nostr/data:/rnostr/data
-      - ./nostr/config:/rnostr/config
+      - ./rnostr:/rnostr:rw
     networks:
       - nginx
   tor:
