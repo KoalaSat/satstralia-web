@@ -33,10 +33,14 @@ services:
       - 3001:3001
     networks:
       - nginx
-  uptime_tor:
-    image: dperson/torproxy
+  nostr:
+    build: https://github.com/rnostr/rnostr.git
+    restart: unless-stopped
     ports:
-      - 8118:8118
+      - 8080:8080
+    volumes:
+      - ./nostr/data:/rnostr/data
+      - ./nostr/config:/rnostr/config
     networks:
       - nginx
   tor:
