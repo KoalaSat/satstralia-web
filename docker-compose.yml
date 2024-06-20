@@ -31,6 +31,8 @@ services:
     restart: always
     ports:
       - 3001:3001
+    volumes:
+      - ./uptimekuma/data:/app/data:rw
     networks:
       - nginx
   nostr:
