@@ -10,7 +10,7 @@ services:
       - '443:443'
     restart: always
     depends_on:
-      - tor_main
+      - tor
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
       - /var/www/certbot:/var/www/certbot/:ro
@@ -43,13 +43,13 @@ services:
     ports:
       - 3001:3001
     depends_on:
-      - tor_proxy
+      - tor
     volumes:
       - ./uptimekuma/data:/app/data:rw
     networks:
       - nginx
-  tor_main:
-    build: ./tor/tor_proxy
+  tor:
+    build: ./tor/tor
     restart: always
     environment:
       PUBLIC_PORT: 5100
