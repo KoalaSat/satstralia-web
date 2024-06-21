@@ -3,11 +3,11 @@
 #
 # config relay information
 [information]
-name = "rnostr"
+name = "Satstralia"
 description = "Welcome to Satstralia's nostr relay."
 software = "https://github.com/rnostr/rnostr"
-# pubkey = ""
-# contact = ""
+pubkey = "npub1z94lxjf7m5snda0qc6s3kmpy6r4nfw74h78da9j6j4y8ym08zrrs459wpr"
+contact = "info@satstralia.com"
 
 # config data path
 [data]
@@ -30,7 +30,7 @@ port = 8080
 # real_ip_header = "x-forwarded-for"
 
 # redirect to other site when user access the http index page
-# index_redirect_to = "https://example.com"
+# index_redirect_to = "https://satstralia.com"
 
 # heartbeat timeout (default 120 seconds, must bigger than heartbeat interval)
 # How long before lack of client response causes a timeout
