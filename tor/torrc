@@ -1,12 +1,17 @@
-Log notice file /var/log/tor/notices.log
+# Let tor listen on loopback interface only, on port 9050
+SocksPort 127.0.0.1:9050
 
-## The directory for keeping all the keys/etc. By default, we store
-## things in $HOME/.tor on Unix, and in Application Data\tor on Windows.
-DataDirectory /var/lib/tor
-DataDirectoryGroupReadable 1
+# Try for at most NUM seconds when building circuits. If the circuit isn't open in that time, give up on it. (Default: 1 minute.)
+CircuitBuildTimeout 5
 
-## Enable ControlPort
-ControlPort 9051
-CookieAuthentication 1
-CookieAuthFileGroupReadable 1
-CookieAuthFile /var/lib/tor/control_auth_cookie
+# Send a padding cell every N seconds to keep firewalls from closing our connections while Tor is not in use.
+KeepalivePeriod 60
+
+# Force Tor to consider whether to build a new circuit every NUM seconds.
+NewCircuitPeriod 15
+
+# How many entry guards should we keep at a time?
+NumEntryGuards 8
+
+# Daemonize tor
+RunAsDaemon 1
