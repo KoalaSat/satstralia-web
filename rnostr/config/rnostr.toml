@@ -30,7 +30,7 @@ port = 8080
 # real_ip_header = "x-forwarded-for"
 
 # redirect to other site when user access the http index page
-# index_redirect_to = "https://satstralia.com"
+index_redirect_to = "https://satstralia.com"
 
 # heartbeat timeout (default 120 seconds, must bigger than heartbeat interval)
 # How long before lack of client response causes a timeout
