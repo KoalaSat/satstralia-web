@@ -17,6 +17,7 @@ services:
       - /etc/letsencrypt/:/etc/nginx/ssl/:ro
     networks:
       - nginx
+      - nostr
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
   certbot:
     image: certbot/certbot:latest
@@ -30,8 +31,6 @@ services:
     restart: unless-stopped
     ports:
       - 8080:8080
-    depends_on:
-      - nginx
     volumes:
       - ./rnostr/data:/rnostr/data:rw
       - ./rnostr/config:/rnostr/config:rw
