@@ -12,6 +12,7 @@ services:
     depends_on:
       - tor
       - nostr
+      - uptime_kuma
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
       - /var/www/certbot:/var/www/certbot/:ro
