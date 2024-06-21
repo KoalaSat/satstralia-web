@@ -49,7 +49,7 @@ services:
     networks:
       - nginx
   tor:
-    build: ./tor/tor
+    build: ./tor
     restart: always
     environment:
       PUBLIC_PORT: 5100
