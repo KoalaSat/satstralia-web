@@ -2,7 +2,7 @@ import { CopyOutlined, ExperimentOutlined, GithubOutlined, MailOutlined, ReadOut
 import { Button, Col, Divider, Dropdown, MenuProps, Row, Statistic, Tooltip, Typography, notification } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { isMobile } from 'react-device-detect'
-import { email, learnUrl, nostrPubKey, nostrRelay, onionUrl, onionUrlTest, unsafeUrl } from '../../../constants'
+import { email, learnUrl, nodePubKey, nostrPubKey, nostrRelay, onionUrl, onionUrlTest, unsafeUrl } from '../../../constants'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -94,6 +94,11 @@ export const HomePage: () => JSX.Element = () => {
           <Col span='24'>
             <Row justify='space-around'>
               <Typography.Text>{t('a 🤖RoboSats⚡ coordinator')}</Typography.Text>
+            </Row>
+          </Col>
+          <Col span='24'>
+            <Row justify='space-around'>
+              <Typography.Text>{"D189 4C98 62A9 D02D 47D9 6C84 AE30 B690 4210 DA14"}</Typography.Text>
             </Row>
           </Col>
           <Col span='24'>
@@ -240,11 +245,25 @@ export const HomePage: () => JSX.Element = () => {
                   <Tooltip title='Amboss'>
                     <Button
                       ghost
-                      href='https://amboss.space/node/029c5b14214ca7c1f5334db539dbab266088ba43a40563551efb9458756a94cd94'
+                      href={`https://amboss.space/node/${nodePubKey}`}
                       target='_blank'
                       style={{ height: 60 }}
                     >
                       <img src='/assets/amboss-logo.svg' alt='Amboss' style={{ height: 48, width: 96 }} />
+                    </Button>
+                  </Tooltip>
+                </Row>
+              </Col>
+              <Col sm={4} xs={12}>
+                <Row justify='center'>
+                  <Tooltip title='LN+'>
+                    <Button
+                      ghost
+                      href={`https://lightningnetwork.plus/nodes/${nodePubKey}`}
+                      target='_blank'
+                      style={{ height: 60 }}
+                    >
+                      <img src='/assets/lnpluslogo.svg' alt='Amboss' style={{ height: 48, width: 96 }} />
                     </Button>
                   </Tooltip>
                 </Row>
