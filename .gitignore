@@ -26,5 +26,5 @@ yarn-error.log*
 .env.production.local
 
 # data
-rnostr/data/*
+strfry/db/*
 

@@ -28,13 +28,13 @@ services:
       - /etc/letsencrypt/:/etc/letsencrypt/:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
   nostr:
-    build: https://github.com/rnostr/rnostr.git
+    image: dockurr/strfry:0.9.6
     restart: unless-stopped
     ports:
       - 8080:8080
     volumes:
-      - ./rnostr/data:/rnostr/data:rw
-      - ./rnostr/config:/rnostr/config:rw
+      - ./strfry/db:/app/strfry-db
+      - ./strfry/config/strfry.conf:/etc/strfry.conf:r
     networks:
       - nginx
   uptime_kuma:
