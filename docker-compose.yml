@@ -34,7 +34,7 @@ services:
       - 8080:8080
     volumes:
       - ./strfry/db:/app/strfry-db
-      - ./strfry/config/strfry.conf:/etc/strfry.conf:r
+      - ./strfry/config/strfry.conf:/etc/strfry.conf:ro
     networks:
       - nginx
   uptime_kuma:
