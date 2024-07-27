@@ -44,7 +44,7 @@ export const HomePage: () => JSX.Element = () => {
     if (isMobile) {
       window.location.href = `nostr:${nostrPubKey}`
     } else {
-      window.open(`https://primal.net/p/${nostrPubKey}`, '_blank', 'noopener,noreferrer')
+      window.open(`https://njump.me/${nostrPubKey}`, '_blank', 'noopener,noreferrer')
     }
   }
 
