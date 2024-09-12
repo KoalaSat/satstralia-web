@@ -28,15 +28,16 @@ services:
       - /etc/letsencrypt/:/etc/letsencrypt/:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
   nostr:
-    image: dockurr/strfry:0.9.6
-    restart: unless-stopped
+    build: ./strfry
+    restart: always
     ports:
       - 8080:8080
     volumes:
-      - ./strfry/db:/app/strfry-db
       - ./strfry/config/strfry.conf:/etc/strfry.conf:ro
+      - ./strfry/db/db:/app/strfry-db:rw
     networks:
       - nginx
+    network_mode: service:tor
   uptime_kuma:
     image: louislam/uptime-kuma
     restart: always
