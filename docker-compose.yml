@@ -35,7 +35,7 @@ services:
     volumes:
       - ./strfry/onion_urls.txt:/app/onion_urls.txt:ro
       - ./strfry/config/strfry.conf:/etc/strfry.conf:ro
-      - ./strfry/db:/app/strfry-db:rw
+      - ./strfry/db/data:/app/strfry-db:rw
     networks:
       - nginx
   uptime_kuma:
