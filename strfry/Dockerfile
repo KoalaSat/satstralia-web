@@ -16,12 +16,20 @@ RUN make setup-golpe
 RUN make clean
 RUN make -j4
 
-RUN apt update && apt install -y --no-install-recommends \
-    liblmdb0 libflatbuffers1 libsecp256k1-0 libb2-1 libzstd1\
+RUN apt install -y --no-install-recommends \
+    liblmdb0 libflatbuffers1 libsecp256k1-0 libb2-1 libzstd1 cron\
     && rm -rf /var/lib/apt/lists/*
 
+# Setting up crontab
+COPY crontab /etc/cron.d/crontab
+RUN chmod 0644 /etc/cron.d/crontab
+RUN crontab /etc/cron.d/crontab
+
 # Setting up entrypoints
+COPY sync.sh /etc/strfry/sync.sh
 COPY entrypoint.sh /etc/strfry/entrypoint.sh
+
+RUN chmod +x /etc/strfry/entrypoint.sh
 RUN chmod +x /etc/strfry/sync.sh
 
 #Setting up logs

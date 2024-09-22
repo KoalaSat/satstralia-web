@@ -1,0 +1,2 @@
+wss://freelay.sovbit.host
+wss://nostrvista.aaroniumii.com

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/app/strfry relay
+cron -f -l 8 & tail -f /var/log/cron.log & /app/strfry relay
