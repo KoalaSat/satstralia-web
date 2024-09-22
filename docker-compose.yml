@@ -28,7 +28,7 @@ services:
       - /etc/letsencrypt/:/etc/letsencrypt/:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
   nostr:
-    image: koalasat/satstralia-web-nostr:0.2
+    image: koalasat/satstralia-web-nostr:0.4
     restart: always
     ports:
       - 8080:8080
