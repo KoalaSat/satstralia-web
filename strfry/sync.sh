@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cd /app
+
 filters='{"kinds":[38383]}'
 
 while IFS= read -r line; do
