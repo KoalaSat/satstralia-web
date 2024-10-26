@@ -9,9 +9,9 @@ services:
       - '80:80'
       - '443:443'
     restart: always
-    # depends_on:
+    depends_on:
       # - tor
-      # - nostr
+      - nostr
       # - uptime_kuma
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
@@ -28,17 +28,17 @@ services:
       - /var/www/certbot/:/var/www/certbot/:rw
       - /etc/letsencrypt/:/etc/letsencrypt/:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-  # nostr:
-  #   image: koalasat/satstralia-web-nostr:0.6
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
-  #   volumes:
-  #     - ./strfry/onion_urls.txt:/app/onion_urls.txt:ro
-  #     - ./strfry/config/strfry.conf:/etc/strfry.conf:ro
-  #     - ./strfry/db:/app/strfry-db:rw
-  #   networks:
-  #     - nginx
+  nostr:
+    image: koalasat/satstralia-web-nostr:0.6
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - ./strfry/onion_urls.txt:/app/onion_urls.txt:ro
+      - ./strfry/config/strfry.conf:/etc/strfry.conf:ro
+      - ./strfry/db:/app/strfry-db:rw
+    networks:
+      - nginx
   # uptime_kuma:
   #   image: louislam/uptime-kuma
   #   restart: always
