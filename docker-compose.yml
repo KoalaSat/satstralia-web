@@ -66,4 +66,4 @@ services:
 networks:
   nginx:
     driver: bridge
-    # external: true
+    external: true
