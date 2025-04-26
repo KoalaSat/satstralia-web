@@ -1,2 +1,4 @@
 wss://freelay.sovbit.host
 wss://nostrvista.aaroniumii.com
+wss://nostr-pub.wellorder.net
+wss://relay.damus.io
