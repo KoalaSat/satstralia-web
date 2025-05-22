@@ -39,6 +39,17 @@ services:
       - ./strfry/db:/app/strfry-db:rw
     networks:
       - nginx
+  relay:
+    image: satstralia/satstralia-web-nostr:0.1
+    restart: always
+    ports:
+      - 8081:8080
+    volumes:
+      - ./relay/onion_urls.txt:/app/onion_urls.txt:ro
+      - ./relay/config/strfry.conf:/etc/strfry.conf:ro
+      - ./relay/db:/app/strfry-db:rw
+    networks:
+      - nginx
   # uptime_kuma:
   #   image: louislam/uptime-kuma
   #   restart: always
